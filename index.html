@@ -267,18 +267,20 @@ footer{border-top:1px solid rgba(255,255,255,.08);padding:30px;text-align:center
 </div>
 </header>
 
-<div id="urgency-timer" style="background: linear-gradient(90deg, #b8860b, #ffd700); color: #000; padding: 10px; text-align: center; font-family: sans-serif; font-weight: bold; border-radius: 5px; margin: 10px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-    <span id="timer-text" style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">
-        ⚠️ SISA WAKTU KLAIM BONUS DEPOSIT 100% & ID VIP:
-    </span>
-    <div id="countdown" style="font-size: 24px; margin-top: 5px; font-variant-numeric: tabular-nums;">07:43</div>
+<div id="deposit-timer" style="background: #fdfae6; border: 2px dashed #b8860b; color: #333; padding: 5px; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; border-radius: 8px; margin: 10px 0;">
+    <p style="margin: 0; font-size: 14px; font-weight: bold; color: #b8860b;">
+        🎉 SLOT BONUS DEPOSIT 100% DIAMANKAN!
+    </p>
+    <p style="margin: 5px 0 10px 0; font-size: 12px; color: #666;">
+        Selesaikan pendaftaran & deposit sebelum masa berlaku berakhir:
+    </p>
+    <div id="countdown-v2" style="font-size: 28px; font-weight: 900; color: #d9534f; font-variant-numeric: tabular-nums;">14:59</div>
 </div>
 
 <script>
-// Fungsi Timer Otomatis
-function startTimer(duration, display) {
+function startDepositTimer(duration, display) {
     var timer = duration, minutes, seconds;
-    setInterval(function () {
+    var interval = setInterval(function () {
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
 
@@ -288,15 +290,16 @@ function startTimer(duration, display) {
         display.textContent = minutes + ":" + seconds;
 
         if (--timer < 0) {
-            timer = duration; // Reset otomatis jika habis, agar LP tidak terlihat mati
+            // Kita set reset ke 15:00 lagi agar web tidak terlihat "mati" bagi user baru
+            timer = duration; 
         }
     }, 1000);
 }
 
 window.onload = function () {
-    var fiveMinutes = 60 * 7 + 43, // Kita set di 7 menit 43 detik (Angka Ganjil)
-        display = document.querySelector('#countdown');
-    startTimer(fiveMinutes, display);
+    var fifteenMinutes = 60 * 14 + 59, // Kita set 15 Menit (Waktu ideal isi form & transfer)
+        display = document.querySelector('#countdown-v2');
+    startDepositTimer(fifteenMinutes, display);
 };
 </script>
   
